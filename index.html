@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проект "Оренда авто"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Стилізація хедера на всю довжину */
+        header {
+            background-color: #f8f8f8;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .login-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        /* Контейнер для основного контенту */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Грід для карток */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: white;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h2 {
+            font-size: 24px;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .product-card .price {
+            font-size: 22px;
+            color: #007bff;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .product-card button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .product-card button:hover {
+            background-color: #218838;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu-btn {
+            display: none;
+            background-color: transparent;
+            border: none;
+            color: #000;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: #f8f8f8;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .mobile-menu a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+
+        @media (max-width: 960px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                display: none;
+            }
+
+            .login-btn {
+                margin-left: 0;
+            }
+
+            header {
+                padding: 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+    
+            .mobile-menu.show {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .product-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo">
+        <nav>
+            <a href="#">Головна</a>
+            <a href="#">Про нас</a>
+            <a href="#">Контакти</a>
+            <button class="login-btn">Вхід</button>
+        </nav>
+        <button class="mobile-menu-btn">&#9776;</button>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="#">Головна</a>
+        <a href="#">Про нас</a>
+        <a href="#">Контакти</a>
+    </div>
+
+    <main class="container">
+        <div class="products-grid">
+            <article class="product-card">
+                <img src="https://ukr-prokat.com/wp-content/uploads/2021/05/Chevrolet-Spark_1.jpg" alt="Економ клас">
+                <h2>Економ клас</h2>
+                <p>Ідеальний варіант для міських поїздок. Економічний та комфортний автомобіль.</p>
+                <div class="price">1000 грн/день</div>
+                <button>Замовити</button>
+            </article>
+
+            <article class="product-card">
+                <img src="https://ukr-prokat.com/wp-content/uploads/2017/11/Toyota-Camry.webp" alt="Бізнес клас">
+                <h2>Бізнес клас</h2>
+                <p>Комфортний автомобіль для ділових зустрічей та важливих подій.</p>
+                <div class="price">2500 грн/день</div>
+                <button>Замовити</button>
+            </article>
+
+            <article class="product-card">
+                <img src="https://ukr-prokat.com/wp-content/uploads/2021/04/Audi-Q7.webp" alt="Преміум клас">
+                <h2>Преміум клас</h2>
+                <p>Розкішні автомобілі для особливих випадків та незабутніх вражень.</p>
+                <div class="price">5000 грн/день</div>
+                <button>Замовити</button>
+            </article>
+
+            <article class="product-card">
+                <img src="https://ukr-prokat.com/wp-content/uploads/2020/12/Peugeot-Traveller.webp" alt="Сімейний клас">
+                <h2>Сімейний клас</h2>
+                <p>Просторі автомобілі для комфортних подорожей всією родиною.</p>
+                <div class="price">1800 грн/день</div>
+                <button>Замовити</button>
+            </article>
+        </div>
+    </main>
+
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
